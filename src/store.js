@@ -8,7 +8,10 @@ import { createLogger } from "redux-logger";
 const logger = createLogger();
 
 
+// redux-thunk 사용
+import ReduxThunk from 'redux-thunk';
+
 // 미들웨어가 여러개인 경우에는 파라미터로 여러개를 전달해주면됩니다. applyMiddleware(a,b,c)
-const store = createStore(modules, applyMiddleware(logger));
+const store = createStore(modules, applyMiddleware(logger, ReduxThunk));
 
 export default store;
