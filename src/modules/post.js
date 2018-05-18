@@ -6,10 +6,19 @@ function getPostAPI(postId) {
   return axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 }
 
+const GET_POST = 'GET_POST';
 const GET_POST_PENDING = 'GET_POST_PENDING';
 const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
 const GET_POST_FAILURE = 'GET_POST_FAILURE';
 
+
+// redux-promise-middleware 사용
+export const getPost = (postId) => ({
+  type : GET_POST,
+  payload : getPostAPI(postId)
+});
+/*
+redux-thunk 사용시 
 export const getPost = (postId) => dispatch => {
 
   // 먼저 요청이 시작했다는 것을 알려줍니다.
@@ -32,6 +41,7 @@ export const getPost = (postId) => dispatch => {
          })
 
 }
+*/
 
 const initialState = {
   pending : false,
